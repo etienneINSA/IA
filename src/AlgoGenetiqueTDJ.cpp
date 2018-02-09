@@ -13,7 +13,7 @@
 
 AlgoGenetiqueTDJ::AlgoGenetiqueTDJ(Jeu &unJeu, int uneTaillePop, int unNombreManches, int uneMemoirePop):
 	m_jeu(unJeu), m_taillePopulation(uneTaillePop), m_nombreManches(unNombreManches), m_memoirePop(uneMemoirePop){
-	// TODO Auto-generated constructor stub
+	genPopulation();
 
 }
 
@@ -76,7 +76,10 @@ std::vector<double> AlgoGenetiqueTDJ::fitnessFunction(Strategie &unJoueur1, Stra
 	}
 	unJoueur1.reinitialiser();
 	unJoueur2.reinitialiser();
-	return {gainJoueur1, gainJoueur2};
+	std::vector<double> resultat;
+	resultat.push_back(gainJoueur1);
+	resultat.push_back(gainJoueur1);
+	return resultat;
 }
 
 void AlgoGenetiqueTDJ::genPopulation(){

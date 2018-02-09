@@ -38,6 +38,6 @@ void AGContreStratFixe::selection(){
 		triIndividu.push_back(individu);
 	}
 	sort(triIndividu.begin(), triIndividu.end());
-	triIndividu.resize( getTaillePop()/2);
+	triIndividu.erase(triIndividu.begin() + getTaillePop()/2, triIndividu.end());
 	setPopulation(triIndividu);
 }

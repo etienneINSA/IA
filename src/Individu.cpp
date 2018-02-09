@@ -42,6 +42,6 @@ void Individu::setGain(double unGain){
 	m_gain = unGain;
 }
 
-bool operator<(Individu &unIndividu1, Individu &unIndividu2){
+bool operator<(Individu unIndividu1, Individu unIndividu2){
 	return unIndividu1.getGain() < unIndividu2.getGain();
 }

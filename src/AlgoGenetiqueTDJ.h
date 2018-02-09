@@ -40,7 +40,7 @@ public:
 	int getMemoirePop();
 	void affichage();
 
-private:
+protected:
 	std::vector<double> fitnessFunction(Strategie &unJoueur1, Strategie &unJoueur2);
 	void genPopulation();
 	void croisement();

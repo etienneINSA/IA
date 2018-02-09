@@ -8,9 +8,11 @@
 #include "AlgoGenetique.h"
 
 AlgoGenetique::AlgoGenetique(){
-	genPopulation();
 }
 
+AlgoGenetique::~AlgoGenetique(){
+
+}
 void AlgoGenetique::doOneGeneration(){
 	selection();
 	croisement();

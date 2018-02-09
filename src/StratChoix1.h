@@ -6,7 +6,9 @@
  */
 
 #ifndef STRATCHOIX1_H_
-#define STRATCHOIX1_H_
+#define STRATCHOIX1_H_7
+
+#include "Strategie.h"
 
 class StratChoix1: public Strategie {
 public:

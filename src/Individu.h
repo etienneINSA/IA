@@ -29,6 +29,6 @@ public:
 
 };
 
-bool operator<(Individu &unIndividu1, Individu &unIndividu2);
+bool operator<(Individu unIndividu1, Individu unIndividu2);
 
 #endif /* INDIVIDU_H_ */
