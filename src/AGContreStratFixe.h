@@ -11,19 +11,18 @@
 #include "Strategie.h"
 #include "AlgoGenetiqueTDJ.h"
 
-class Strategie;
 class Jeu;
 
 class AGContreStratFixe : public AlgoGenetiqueTDJ{
-private:
-	Strategie m_strategie;
+protected:
+	Strategie *p_strategie;
 
 public:
-	AGContreStratFixe(Strategie &uneStrategie, Jeu &unJeu, int uneTaillePop, int unNombreManches, int uneTailleMemoire);
+	AGContreStratFixe(Strategie &uneStrategie, const Jeu &unJeu, const int uneTaillePop, const int unNombreManches, const int uneTailleMemoire);
 	virtual ~AGContreStratFixe();
-	Strategie getStrategie();
+	Strategie *getStrategie();
 	void setStrategie(Strategie &uneStrategie);
-private:
+protected:
 	void selection();
 };
 

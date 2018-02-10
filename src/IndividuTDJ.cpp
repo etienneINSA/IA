@@ -9,11 +9,11 @@
 
 #include "IndividuTDJ.h"
 
-IndividuTDJ::IndividuTDJ(int uneTailleMemoire):m_strategie(uneTailleMemoire){
+IndividuTDJ::IndividuTDJ(const int uneTailleMemoire):m_strategie(*this, uneTailleMemoire){
 
 }
 
-IndividuTDJ::IndividuTDJ(std::vector<GeneDouble> &unChromosome, int uneTailleMemoire):m_chromosome(unChromosome), m_strategie(uneTailleMemoire){
+IndividuTDJ::IndividuTDJ(const std::vector<GeneDouble> &unChromosome, const int uneTailleMemoire): m_strategie(*this, uneTailleMemoire), m_chromosome(unChromosome){
 	// TODO Auto-generated destructor stub
 }
 
@@ -21,11 +21,11 @@ IndividuTDJ::~IndividuTDJ(){
 	// TODO Auto-generated destructor stub
 }
 
-GeneDouble IndividuTDJ::getGene(int unGene){
+GeneDouble IndividuTDJ::getGene(const int unGene) const{
 	return m_chromosome.at(unGene);
 }
 
-void IndividuTDJ::setGene(int unePosition, GeneDouble &unGene){
+void IndividuTDJ::setGene(const int unePosition, const GeneDouble &unGene){
 	m_chromosome.at(unePosition) = unGene;
 }
 
@@ -38,7 +38,7 @@ void IndividuTDJ::setRandomChromosome(){
 	}
 }
 
-StrategieEvo IndividuTDJ::getStrategie(){
+StrategieEvo IndividuTDJ::getStrategie() const{
 	return m_strategie;
 }
 

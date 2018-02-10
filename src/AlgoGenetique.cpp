@@ -8,6 +8,7 @@
 #include "AlgoGenetique.h"
 
 AlgoGenetique::AlgoGenetique(){
+
 }
 
 AlgoGenetique::~AlgoGenetique(){
@@ -19,7 +20,7 @@ void AlgoGenetique::doOneGeneration(){
 	mutation();
 }
 
-void AlgoGenetique::doGenerations(int n){
+void AlgoGenetique::doGenerations(const int n){
 	for (int i = 0; i < n; ++i){
 		selection();
 		croisement();
@@ -27,11 +28,27 @@ void AlgoGenetique::doGenerations(int n){
 	}
 }
 
-int AlgoGenetique::getTaillePop(){
+int AlgoGenetique::getTaillePop() const{
 	return m_population.size();
 }
 
-Individu AlgoGenetique::getPop(int unIndividu){
+Individu AlgoGenetique::getPop(const int unIndividu) const{
 	return m_population.at(unIndividu);
 }
 
+
+void AlgoGenetique::genPopulation(){
+
+}
+
+void AlgoGenetique::selection(){
+
+}
+
+void AlgoGenetique::croisement(){
+
+}
+
+void AlgoGenetique::mutation(){
+
+}

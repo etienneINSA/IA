@@ -11,7 +11,7 @@ GeneDouble::GeneDouble():m_valeur(0){
 
 }
 
-GeneDouble::GeneDouble(float uneValeur):m_valeur(uneValeur){
+GeneDouble::GeneDouble(const double uneValeur):m_valeur(uneValeur){
 	// TODO Auto-generated constructor stub
 
 }
@@ -20,10 +20,10 @@ GeneDouble::~GeneDouble() {
 	// TODO Auto-generated destructor stub
 }
 
-float GeneDouble::getValeur(){
+double GeneDouble::getValeur() const{
 	return m_valeur;
 }
 
-void GeneDouble::setValeur(int uneValeur){
+void GeneDouble::setValeur(const int uneValeur){
 	m_valeur = uneValeur;
 }

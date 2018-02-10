@@ -13,19 +13,26 @@
 #include "GeneDouble.h"
 #include "Strategie.h"
 
+
+class IndividuTDJ;
+
 class StrategieEvo : public Strategie {
-private:
+protected:
+	IndividuTDJ *p_individu;
 	int m_tailleMemoire;
 	int m_dernieresActions;
 public:
-	StrategieEvo(int uneTailleMemoire);
+	StrategieEvo(IndividuTDJ &unIndividu, const int uneTailleMemoire);
 	virtual ~StrategieEvo();
-	int actionSuivante(std::vector<GeneDouble> &unChromosome);
+	int actionSuivante();
 	void reinitialiser();
-	int getTailleMemoire();
-	int getAction(int uneValeur);
-	void setAction(int uneSuiteDActions);
-	void nouvelleAction(int uneAction);
+	void memoriser(const int uneAction);
+	IndividuTDJ *getIndividu();
+	void setIndividu(IndividuTDJ &unIndividu);
+	int getTailleMemoire() const;
+	int getAction(const int uneValeur) const;
+	void setAction(const int uneSuiteDActions);
+
 };
 
 #endif /* STRATEGIEEVO_H_ */

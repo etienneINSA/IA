@@ -18,7 +18,7 @@
 
 class AlgoGenetiqueTDJ : public AlgoGenetique {
 
-private:
+protected:
 	Jeu m_jeu;
 	int m_taillePopulation;
 	int m_nombreManches;
@@ -26,22 +26,23 @@ private:
 	std::vector<IndividuTDJ> m_population;
 
 public:
-	AlgoGenetiqueTDJ(Jeu &unJeu, int uneTaillePop, int unNombreManches, int uneMemoirePop);
+	AlgoGenetiqueTDJ(const Jeu &unJeu, const int uneTaillePop, const int unNombreManches, const int uneMemoirePop);
 	virtual ~AlgoGenetiqueTDJ();
-	Jeu getJeu();
-	void setJeu(Jeu &unJeu);
-	IndividuTDJ getIndividu(int unIndividu);
+	Jeu getJeu() const;
+	void setJeu(const Jeu &unJeu);
+	IndividuTDJ getIndividu(const int unIndividu) const;
 	void addIndividu();
-	void addIndividu(IndividuTDJ &unIndividu);
-	void setPopulation(std::vector<IndividuTDJ> &unePopulation);
-	int getTaillePop();
-	int getNombreManches();
-	void setNombreManches(int unNombreManches);
-	int getMemoirePop();
-	void affichage();
+	void addIndividu(const IndividuTDJ &unIndividu);
+	void setPopulation(const std::vector<IndividuTDJ> &unePopulation);
+	int getTaillePop() const;
+	int getNombreManches() const;
+	void setNombreManches(const int unNombreManches);
+	int getMemoirePop() const;
+	void affichage() const;
 
 protected:
 	std::vector<double> fitnessFunction(Strategie &unJoueur1, Strategie &unJoueur2);
+	virtual void selection();
 	void genPopulation();
 	void croisement();
 	void mutation();

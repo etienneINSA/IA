@@ -15,3 +15,14 @@ Strategie::~Strategie(){
 
 }
 
+void Strategie::memoriser(const int uneAction){
+
+}
+
+int Strategie::actionSuivante(){
+	return 0;
+}
+
+void Strategie::reinitialiser(){
+
+}

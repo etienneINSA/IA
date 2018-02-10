@@ -11,13 +11,13 @@
 #include "Gene.h"
 
 class GeneDouble : public Gene {
-private:
-	float m_valeur;
+protected:
+	double m_valeur;
 public:
 	GeneDouble();
-	GeneDouble(float uneValeur);
+	GeneDouble(const double uneValeur);
 	virtual ~GeneDouble();
-	float getValeur();
-	void setValeur(int uneValeur);
+	double getValeur() const;
+	void setValeur(const int uneValeur);
 };
 #endif /* GENEDOUBLE_H_ */

@@ -9,11 +9,12 @@
 #define STRATEGIE_H_
 
 
-class Strategie {
+class Strategie{
 public:
 	Strategie();
 	virtual ~Strategie();
 	virtual int actionSuivante();
+	virtual void memoriser(const int uneAction);
 	virtual void reinitialiser();
 };
 

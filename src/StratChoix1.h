@@ -15,6 +15,7 @@ public:
 	StratChoix1();
 	virtual ~StratChoix1();
 	int actionSuivante();
+	void memoriser(const int uneAction);
 	void reinitialiser();
 
 };

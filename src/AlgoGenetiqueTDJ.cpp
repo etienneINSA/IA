@@ -11,21 +11,20 @@
 
 #include "AlgoGenetiqueTDJ.h"
 
-AlgoGenetiqueTDJ::AlgoGenetiqueTDJ(Jeu &unJeu, int uneTaillePop, int unNombreManches, int uneMemoirePop):
+AlgoGenetiqueTDJ::AlgoGenetiqueTDJ(const Jeu &unJeu, const int uneTaillePop, const int unNombreManches, const int uneMemoirePop):
 	m_jeu(unJeu), m_taillePopulation(uneTaillePop), m_nombreManches(unNombreManches), m_memoirePop(uneMemoirePop){
 	genPopulation();
-
 }
 
 AlgoGenetiqueTDJ::~AlgoGenetiqueTDJ() {
 	// TODO Auto-generated destructor stub
 }
 
-Jeu AlgoGenetiqueTDJ::getJeu(){
+Jeu AlgoGenetiqueTDJ::getJeu() const{
 	return m_jeu;
 }
 
-void AlgoGenetiqueTDJ::setJeu(Jeu &unJeu){
+void AlgoGenetiqueTDJ::setJeu(const Jeu &unJeu){
 	m_jeu = unJeu;
 }
 
@@ -34,32 +33,32 @@ void AlgoGenetiqueTDJ::addIndividu(){
 	addIndividu(individu);
 }
 
-void AlgoGenetiqueTDJ::addIndividu(IndividuTDJ &unIndividu){
+void AlgoGenetiqueTDJ::addIndividu(const IndividuTDJ &unIndividu){
 	m_population.push_back(unIndividu);
 }
 
-IndividuTDJ AlgoGenetiqueTDJ::getIndividu(int unIndividu){
+IndividuTDJ AlgoGenetiqueTDJ::getIndividu(const int unIndividu) const{
 	return m_population.at(unIndividu);
 }
 
-void AlgoGenetiqueTDJ::setPopulation(std::vector<IndividuTDJ> &unePopulation){
+void AlgoGenetiqueTDJ::setPopulation(const std::vector<IndividuTDJ> &unePopulation){
 	m_population =  unePopulation;
 }
 
-int AlgoGenetiqueTDJ::getTaillePop(){
+int AlgoGenetiqueTDJ::getTaillePop() const{
 	return m_taillePopulation;
 }
 
 
-int AlgoGenetiqueTDJ::getNombreManches(){
+int AlgoGenetiqueTDJ::getNombreManches() const{
 	return m_nombreManches;
 }
 
-void AlgoGenetiqueTDJ::setNombreManches(int unNombreManches){
+void AlgoGenetiqueTDJ::setNombreManches(const int unNombreManches){
 	m_nombreManches = unNombreManches;
 }
 
-int AlgoGenetiqueTDJ::getMemoirePop(){
+int AlgoGenetiqueTDJ::getMemoirePop() const{
 	return m_memoirePop;
 }
 
@@ -71,6 +70,8 @@ std::vector<double> AlgoGenetiqueTDJ::fitnessFunction(Strategie &unJoueur1, Stra
 		int actionJoueur1 = unJoueur1.actionSuivante();
 		int actionJoueur2 = unJoueur2.actionSuivante();
 		std::vector<int> resultat = getJeu().resultat( actionJoueur1, actionJoueur2);
+		unJoueur1.memoriser(actionJoueur2);
+		unJoueur2.memoriser(actionJoueur1);
 		gainJoueur1+= resultat.at(0);
 		gainJoueur2+= resultat.at(1);
 	}
@@ -85,9 +86,15 @@ std::vector<double> AlgoGenetiqueTDJ::fitnessFunction(Strategie &unJoueur1, Stra
 void AlgoGenetiqueTDJ::genPopulation(){
 	int t = getTaillePop();
 	for (int i = 0; i < t; ++i){
+		addIndividu();
 		getIndividu(i).setRandomChromosome();
 	}
 }
+
+void AlgoGenetiqueTDJ::selection(){
+
+}
+
 
 void AlgoGenetiqueTDJ::croisement(){
 	int t = getTaillePop();
@@ -121,7 +128,7 @@ void AlgoGenetiqueTDJ::mutation(){
 	}
 }
 
-void AlgoGenetiqueTDJ::affichage(){
+void AlgoGenetiqueTDJ::affichage() const{
 		int t = getTaillePop();
 		for (int i = 0; i < t; ++i){
 			std::cout << getIndividu(i).getGain() << std::endl;

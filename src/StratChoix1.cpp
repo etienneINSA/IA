@@ -20,6 +20,10 @@ int StratChoix1::actionSuivante(){
 	return 0;
 }
 
+void StratChoix1::memoriser(const int uneAction){
+
+}
+
 void StratChoix1::reinitialiser(){
 
 }

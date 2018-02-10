@@ -12,13 +12,14 @@
 
 
 class Jeu {
-private:
+protected:
 	std::vector<int> m_matriceGains;
 
 public:
-	Jeu(std::vector<int> &uneMatriceGains);
+	Jeu(const std::vector<int> &uneMatriceGains);
 	virtual ~Jeu();
-	std::vector<int> resultat(int choixJoueur1, int choixJoueur2);
+	int getValeurMatrice(const int uneValeur) const;
+	std::vector<int> resultat(const int choixJoueur1, const int choixJoueur2) const;
 };
 
 #endif /* JEU_H_ */

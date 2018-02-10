@@ -15,19 +15,19 @@
 #include "StrategieEvo.h"
 
 class IndividuTDJ : public Individu {
-private:
+protected:
 
 	StrategieEvo m_strategie;
 	std::vector<GeneDouble> m_chromosome;
 
 public:
-	IndividuTDJ(int uneTailleMemoire);
-	IndividuTDJ(std::vector<GeneDouble> &unChromosome, int uneTailleMemoire);
+	IndividuTDJ(const int uneTailleMemoire);
+	IndividuTDJ(const std::vector<GeneDouble> &unChromosome, const int uneTailleMemoire);
 	virtual ~IndividuTDJ();
-	GeneDouble getGene(int unGene);
-	void setGene(int unePosition, GeneDouble &unGene);
+	GeneDouble getGene(const int unGene) const;
+	void setGene(const int unePosition, const GeneDouble &unGene);
 	void setRandomChromosome();
-	StrategieEvo getStrategie();
+	StrategieEvo getStrategie() const;
 
 };
 

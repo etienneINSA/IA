@@ -11,7 +11,7 @@
 #include "AGContreStratFixe.h"
 #include "Jeu.h"
 
-int main (int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 	std::vector<int> matriceGains;
 	matriceGains.push_back(-1);
 	matriceGains.push_back(-1);
@@ -27,4 +27,6 @@ int main (int argc, char *argv[]) {
 	algo.affichage();
 	algo.doOneGeneration();
 	algo.affichage();
+	return 0;
 }
+

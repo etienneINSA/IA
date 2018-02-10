@@ -7,7 +7,7 @@
 
 #include "Jeu.h"
 
-Jeu::Jeu(std::vector<int> &uneMatriceGains):m_matriceGains(uneMatriceGains) {
+Jeu::Jeu(const std::vector<int> &uneMatriceGains):m_matriceGains(uneMatriceGains) {
 	// TODO Auto-generated constructor stub
 
 }
@@ -16,9 +16,13 @@ Jeu::~Jeu() {
 	// TODO Auto-generated destructor stub
 }
 
-std::vector<int> Jeu::resultat(int choixJoueur1, int choixJoueur2){
+int Jeu::getValeurMatrice(const int uneValeur) const{
+	return m_matriceGains.at(uneValeur);
+}
+
+std::vector<int> Jeu::resultat(const int choixJoueur1, const int choixJoueur2) const{
 	std::vector<int> resultat;
-	resultat.push_back(2*(choixJoueur1 + 2*choixJoueur2));
-	resultat.push_back(2*(choixJoueur1 + 2*choixJoueur2)+1);
+	resultat.push_back( getValeurMatrice( 2*(choixJoueur1 + 2*choixJoueur2) ) );
+	resultat.push_back( getValeurMatrice( 2*(choixJoueur1 + 2*choixJoueur2)+1 ) );
 	return resultat;
 }

@@ -16,32 +16,32 @@ Individu::~Individu(){
 
 }
 
-int Individu::getTailleChromosome(){
+int Individu::getTailleChromosome() const{
 	return m_chromosome.size();
 }
 
-Gene Individu::getGene(int unGene){
+Gene Individu::getGene(const int unGene) const{
 	return m_chromosome.at(unGene);
 
 }
 
-void Individu::setGene(int unePosition, Gene unGene){
+void Individu::setGene(const int unePosition, const Gene &unGene){
 	m_chromosome.at(unePosition) = unGene;
 }
 
 
-void Individu::setChromosome(std::vector<Gene> &unChromosome){
+void Individu::setChromosome(const std::vector<Gene> &unChromosome){
 	m_chromosome = unChromosome;
 }
 
-double Individu::getGain(){
+double Individu::getGain() const{
 	return m_gain;
 }
 
-void Individu::setGain(double unGain){
+void Individu::setGain(const double unGain){
 	m_gain = unGain;
 }
 
-bool operator<(Individu unIndividu1, Individu unIndividu2){
+bool operator<(const Individu &unIndividu1, const Individu &unIndividu2){
 	return unIndividu1.getGain() < unIndividu2.getGain();
 }

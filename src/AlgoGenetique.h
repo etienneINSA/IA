@@ -13,7 +13,7 @@
 #include "Individu.h"
 
 class AlgoGenetique {
-private:
+protected:
 	std::vector<Individu> m_population;
 
 public:
@@ -21,12 +21,12 @@ public:
 	virtual ~AlgoGenetique();
 
 	void doOneGeneration();
-	void doGenerations(int n);
+	void doGenerations(const int n);
 
-	int getTaillePop();
-	Individu getPop(int unIndividu);
+	int getTaillePop() const;
+	Individu getPop(const int unIndividu) const;
 
-private:
+protected:
 	virtual void genPopulation();
 	virtual void selection();
 	virtual void croisement();

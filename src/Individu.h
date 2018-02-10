@@ -13,22 +13,22 @@
 #include "Gene.h"
 
 class Individu {
-private :
+protected:
 	double m_gain;
 	std::vector<Gene> m_chromosome;
 
 public:
 	Individu();
 	virtual ~Individu();
-	int getTailleChromosome();
-	Gene getGene(int unGene);
-	void setGene(int unePosition, Gene unGene);
-	void setChromosome(std::vector<Gene> &unChromosome);
-	double getGain();
-	void setGain(double unGain);
+	int getTailleChromosome() const;
+	Gene getGene(const int unGene) const;
+	void setGene(const int unePosition, const Gene &unGene);
+	void setChromosome(const std::vector<Gene> &unChromosome);
+	double getGain() const;
+	void setGain(const double unGain);
 
 };
 
-bool operator<(Individu unIndividu1, Individu unIndividu2);
+bool operator<(const Individu &unIndividu1, const Individu &unIndividu2);
 
 #endif /* INDIVIDU_H_ */
