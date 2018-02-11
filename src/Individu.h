@@ -12,23 +12,27 @@
 
 #include "Gene.h"
 
-class Individu {
+template<class T> class Individu {
 protected:
 	double m_gain;
-	std::vector<Gene> m_chromosome;
+	std::vector<T> m_chromosome;
 
 public:
-	Individu();
+	Individu(const int uneTailleChromosome);
+	Individu(const std::vector<T> &unChromosome, const int uneTailleChromosome);
 	virtual ~Individu();
 	int getTailleChromosome() const;
-	Gene getGene(const int unGene) const;
-	void setGene(const int unePosition, const Gene &unGene);
-	void setChromosome(const std::vector<Gene> &unChromosome);
+	T getGene(const int unGene)const;
+	void setGene(const int unePosition, T &unGene);
+	void setChromosome(const std::vector<T> &unChromosome);
 	double getGain() const;
 	void setGain(const double unGain);
 
 };
 
-bool operator<(const Individu &unIndividu1, const Individu &unIndividu2);
+#include "Individu.inl"
 
+template<class T> bool operator<(const Individu<T> &unIndividu1, const Individu<T> &unIndividu2){
+	return unIndividu1.getGain() < unIndividu2.getGain();
+}
 #endif /* INDIVIDU_H_ */

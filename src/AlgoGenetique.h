@@ -12,9 +12,9 @@
 
 #include "Individu.h"
 
-class AlgoGenetique {
+template<class T> class AlgoGenetique {
 protected:
-	std::vector<Individu> m_population;
+	std::vector<T> m_population;
 
 public:
 	AlgoGenetique();
@@ -24,13 +24,15 @@ public:
 	void doGenerations(const int n);
 
 	int getTaillePop() const;
-	Individu getPop(const int unIndividu) const;
+	T getPop(const int unIndividu) const;
 
 protected:
-	virtual void genPopulation();
-	virtual void selection();
-	virtual void croisement();
-	virtual void mutation();
+	void genPopulation();
+	void selection();
+	void croisement();
+	void mutation();
 };
+
+#include "AlgoGenetique.inl"
 
 #endif /* ALGOGENETIQUE_H_ */

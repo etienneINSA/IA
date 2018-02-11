@@ -14,18 +14,18 @@
 #include "Individu.h"
 #include "StrategieEvo.h"
 
-class IndividuTDJ : public Individu {
+class IndividuTDJ: public Individu<GeneDouble>{
 protected:
 
 	StrategieEvo m_strategie;
-	std::vector<GeneDouble> m_chromosome;
 
 public:
 	IndividuTDJ(const int uneTailleMemoire);
 	IndividuTDJ(const std::vector<GeneDouble> &unChromosome, const int uneTailleMemoire);
 	virtual ~IndividuTDJ();
-	GeneDouble getGene(const int unGene) const;
-	void setGene(const int unePosition, const GeneDouble &unGene);
+	GeneDouble getGene(const int unGene);
+	void setGene(const int unePosition, GeneDouble &unGene);
+	void setChromosome(const std::vector<GeneDouble> &unChromosome);
 	void setRandomChromosome();
 	StrategieEvo getStrategie() const;
 

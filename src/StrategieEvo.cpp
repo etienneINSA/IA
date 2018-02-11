@@ -5,7 +5,7 @@
  *      Author: emacedegastines
  */
 
-#include <cmath>
+
 #include <cstdlib>
 
 #include "StrategieEvo.h"

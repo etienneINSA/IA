@@ -16,7 +16,7 @@
 #include "Strategie.h"
 
 
-class AlgoGenetiqueTDJ : public AlgoGenetique {
+class AlgoGenetiqueTDJ : public AlgoGenetique<IndividuTDJ> {
 
 protected:
 	Jeu m_jeu;
