@@ -14,7 +14,7 @@
 
 template<class T> class AlgoGenetique {
 protected:
-	std::vector<T> m_population;
+	std::vector<T*> m_population;
 
 public:
 	AlgoGenetique();
@@ -24,13 +24,16 @@ public:
 	void doGenerations(const int n);
 
 	int getTaillePop() const;
-	T getPop(const int unIndividu) const;
+	T *getIndividu(const int unIndividu);
+	void addIndividu();
+	void addIndividu(T &unIndividu);
+	void setPopulation(std::vector<T*> &unePopulation);
 
 protected:
-	void genPopulation();
-	void selection();
-	void croisement();
-	void mutation();
+	virtual void genPopulation();
+	virtual void selection();
+	virtual void croisement();
+	virtual void mutation();
 };
 
 #include "AlgoGenetique.inl"

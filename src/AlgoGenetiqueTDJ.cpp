@@ -29,21 +29,14 @@ void AlgoGenetiqueTDJ::setJeu(const Jeu &unJeu){
 }
 
 void AlgoGenetiqueTDJ::addIndividu(){
-	IndividuTDJ individu(getMemoirePop());
-	addIndividu(individu);
+	IndividuTDJ *individu = new IndividuTDJ(getMemoirePop());
+	addIndividu(*individu);
 }
 
-void AlgoGenetiqueTDJ::addIndividu(const IndividuTDJ &unIndividu){
-	m_population.push_back(unIndividu);
+void AlgoGenetiqueTDJ::addIndividu(IndividuTDJ &unIndividu){
+	m_population.push_back(&unIndividu);
 }
 
-IndividuTDJ AlgoGenetiqueTDJ::getIndividu(const int unIndividu) const{
-	return m_population.at(unIndividu);
-}
-
-void AlgoGenetiqueTDJ::setPopulation(const std::vector<IndividuTDJ> &unePopulation){
-	m_population =  unePopulation;
-}
 
 int AlgoGenetiqueTDJ::getTaillePop() const{
 	return m_taillePopulation;
@@ -87,7 +80,7 @@ void AlgoGenetiqueTDJ::genPopulation(){
 	int t = getTaillePop();
 	for (int i = 0; i < t; ++i){
 		addIndividu();
-		getIndividu(i).setRandomChromosome();
+		m_population.at(i)->setRandomChromosome();
 	}
 }
 
@@ -101,17 +94,17 @@ void AlgoGenetiqueTDJ::croisement(){
 	for (int i = 0; i < t/2; i+=2){
 		addIndividu();
 		addIndividu();
-		for(int j = 0; j < getIndividu(i).getTailleChromosome(); ++i){
+		for(int j = 0; j < getIndividu(i)->getTailleChromosome(); ++i){
 			double r = rand()/(double)RAND_MAX;
-			GeneDouble gene1 = getIndividu(i).getGene(j);
-			GeneDouble gene2 = getIndividu(i + 1).getGene(j);
+			GeneDouble gene1 = getIndividu(i)->getGene(j);
+			GeneDouble gene2 = getIndividu(i + 1)->getGene(j);
 			if (r  < 0.75){
-				getIndividu(t + i).setGene(j, gene1);
-				getIndividu(t + i + 1).setGene(j, gene2);
+				getIndividu(t + i)->setGene(j, gene1);
+				getIndividu(t + i + 1)->setGene(j, gene2);
 			}
 			else{
-				getIndividu(t + i).setGene(j, gene2);
-				getIndividu(t + i + 1).setGene(j, gene1);
+				getIndividu(t + i)->setGene(j, gene2);
+				getIndividu(t + i + 1)->setGene(j, gene1);
 			}
 		}
 	}
@@ -120,17 +113,17 @@ void AlgoGenetiqueTDJ::croisement(){
 void AlgoGenetiqueTDJ::mutation(){
 	int t = getTaillePop();
 	for (int i = 0; i < t; ++i){
-		for(int j = 0; j < getIndividu(i).getTailleChromosome(); ++i){
-			double valeurGene = getIndividu(i).getGene(j).getValeur();
+		for(int j = 0; j < getIndividu(i)->getTailleChromosome(); ++i){
+			double valeurGene = getIndividu(i)->getGene(j).getValeur();
 			double r = rand()/(double)RAND_MAX*0.1 - 0.05;
-			getIndividu(i).getGene(j).setValeur( std::max(1., std::min(0., valeurGene + r)));
+			getIndividu(i)->getGene(j).setValeur( std::max(1., std::min(0., valeurGene + r)));
 		}
 	}
 }
 
-void AlgoGenetiqueTDJ::affichage() const{
+void AlgoGenetiqueTDJ::affichage() {
 		int t = getTaillePop();
 		for (int i = 0; i < t; ++i){
-			std::cout << getIndividu(i).getGain() << std::endl;
+			std::cout << getIndividu(i)->getGain() << std::endl;
 		}
 }

@@ -28,13 +28,13 @@ void AGContreStratFixe::setStrategie(Strategie &uneStrategie){
 
 void AGContreStratFixe::selection(){
 	int p = getTaillePop();
-	std::vector<IndividuTDJ> triIndividu;
+	std::vector<IndividuTDJ*> triIndividu;
 	for (int i = 0; i < p; ++i){
-		IndividuTDJ individu = getIndividu(i);
-		StrategieEvo strat1 = individu.getStrategie();
+		IndividuTDJ *individu = getIndividu(i);
+		StrategieEvo strat1 = individu->getStrategie();
 		Strategie *strat2 = getStrategie();
 		std::vector<double> eval = fitnessFunction(strat1, *strat2);
-		individu.setGain(eval.at(0));
+		individu->setGain(eval.at(0));
 		triIndividu.push_back(individu);
 	}
 	sort(triIndividu.begin(), triIndividu.end());

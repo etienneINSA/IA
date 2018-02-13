@@ -23,29 +23,26 @@ protected:
 	int m_taillePopulation;
 	int m_nombreManches;
 	int m_memoirePop;
-	std::vector<IndividuTDJ> m_population;
 
 public:
 	AlgoGenetiqueTDJ(const Jeu &unJeu, const int uneTaillePop, const int unNombreManches, const int uneMemoirePop);
 	virtual ~AlgoGenetiqueTDJ();
 	Jeu getJeu() const;
 	void setJeu(const Jeu &unJeu);
-	IndividuTDJ getIndividu(const int unIndividu) const;
-	void addIndividu();
-	void addIndividu(const IndividuTDJ &unIndividu);
-	void setPopulation(const std::vector<IndividuTDJ> &unePopulation);
 	int getTaillePop() const;
+	void addIndividu();
+	void addIndividu(IndividuTDJ &unIndividu);
 	int getNombreManches() const;
 	void setNombreManches(const int unNombreManches);
 	int getMemoirePop() const;
-	void affichage() const;
+	void affichage();
 
 protected:
 	std::vector<double> fitnessFunction(Strategie &unJoueur1, Strategie &unJoueur2);
 	virtual void selection();
-	void genPopulation();
-	void croisement();
-	void mutation();
+	virtual void genPopulation();
+	virtual void croisement();
+	virtual void mutation();
 };
 
 #endif /* ALGOGENETIQUETDJ_H_ */
