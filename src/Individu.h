@@ -28,11 +28,14 @@ public:
 	double getGain() const;
 	void setGain(const double unGain);
 
+
+	static bool comparaisonIndividu(Individu<T> *unIndividu1, Individu<T> *unIndividu2){
+		return unIndividu1->getGain() < unIndividu2->getGain();
+	}
+
 };
 
 #include "Individu.inl"
 
-template<class T> bool operator<(const Individu<T> &unIndividu1, const Individu<T> &unIndividu2){
-	return unIndividu1.getGain() < unIndividu2.getGain();
-}
+
 #endif /* INDIVIDU_H_ */

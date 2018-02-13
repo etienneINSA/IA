@@ -37,7 +37,10 @@ void AGContreStratFixe::selection(){
 		individu->setGain(eval.at(0));
 		triIndividu.push_back(individu);
 	}
-	sort(triIndividu.begin(), triIndividu.end());
-	triIndividu.erase(triIndividu.begin() + getTaillePop()/2, triIndividu.end());
+	sort(triIndividu.begin(), triIndividu.end(), Individu<GeneDouble>::comparaisonIndividu);
+	for (int i = 0; i < p/2; ++i){
+		delete(getIndividu(i));
+	}
+	triIndividu.erase(triIndividu.begin(), triIndividu.begin() + getTaillePop()/2);
 	setPopulation(triIndividu);
 }

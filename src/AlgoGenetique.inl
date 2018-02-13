@@ -5,8 +5,6 @@
  *      Author: emacedegastines
  */
 
-#include "AlgoGenetique.h"
-
 template<class T> AlgoGenetique<T>::AlgoGenetique(){
 
 }
