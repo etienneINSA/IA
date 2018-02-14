@@ -21,11 +21,11 @@ protected:
 
 public:
 	IndividuTDJ(const int uneTailleMemoire);
-	IndividuTDJ(const std::vector<GeneDouble> &unChromosome, const int uneTailleMemoire);
+	IndividuTDJ(std::vector<GeneDouble*> &unChromosome, const int uneTailleMemoire);
 	virtual ~IndividuTDJ();
-	GeneDouble getGene(const int unGene);
+	GeneDouble *getGene(const int unGene);
 	void setGene(const int unePosition, GeneDouble &unGene);
-	void setChromosome(const std::vector<GeneDouble> &unChromosome);
+	void setChromosome(std::vector<GeneDouble*> &unChromosome);
 	void setRandomChromosome();
 	StrategieEvo getStrategie() const;
 

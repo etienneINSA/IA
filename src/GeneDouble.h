@@ -18,6 +18,7 @@ public:
 	GeneDouble(const double uneValeur);
 	virtual ~GeneDouble();
 	double getValeur() const;
-	void setValeur(const int uneValeur);
+	void setValeur(const double uneValeur);
+	void copie(const GeneDouble &unGene);
 };
 #endif /* GENEDOUBLE_H_ */

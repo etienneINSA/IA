@@ -15,16 +15,16 @@
 template<class T> class Individu {
 protected:
 	double m_gain;
-	std::vector<T> m_chromosome;
+	std::vector<T*> m_chromosome;
 
 public:
 	Individu(const int uneTailleChromosome);
-	Individu(const std::vector<T> &unChromosome, const int uneTailleChromosome);
+	Individu(std::vector<T*> &unChromosome, const int uneTailleChromosome);
 	virtual ~Individu();
 	int getTailleChromosome() const;
-	T getGene(const int unGene)const;
+	T *getGene(const int unGene);
 	void setGene(const int unePosition, T &unGene);
-	void setChromosome(const std::vector<T> &unChromosome);
+	void setChromosome(std::vector<T*> &unChromosome);
 	double getGain() const;
 	void setGain(const double unGain);
 

@@ -94,17 +94,19 @@ void AlgoGenetiqueTDJ::croisement(){
 	for (int i = 0; i < t/2; i+=2){
 		addIndividu();
 		addIndividu();
-		for(int j = 0; j < getIndividu(i)->getTailleChromosome(); ++i){
+		for(int j = 0; j < getIndividu(i)->getTailleChromosome(); ++j){
 			double r = rand()/(double)RAND_MAX;
-			GeneDouble gene1 = getIndividu(i)->getGene(j);
-			GeneDouble gene2 = getIndividu(i + 1)->getGene(j);
+			GeneDouble *gene1 = new GeneDouble();
+			gene1->copie(*getIndividu(i)->getGene(j));
+			GeneDouble *gene2 = new GeneDouble();
+			gene2->copie(*getIndividu(i + 1)->getGene(j));
 			if (r  < 0.75){
-				getIndividu(t + i)->setGene(j, gene1);
-				getIndividu(t + i + 1)->setGene(j, gene2);
+				getIndividu(t/2 + i)->setGene(j, *gene1);
+				getIndividu(t/2 + i + 1)->setGene(j, *gene2);
 			}
 			else{
-				getIndividu(t + i)->setGene(j, gene2);
-				getIndividu(t + i + 1)->setGene(j, gene1);
+				getIndividu(t/2 + i)->setGene(j, *gene2);
+				getIndividu(t/2 + i + 1)->setGene(j, *gene1);
 			}
 		}
 	}
@@ -113,10 +115,10 @@ void AlgoGenetiqueTDJ::croisement(){
 void AlgoGenetiqueTDJ::mutation(){
 	int t = getTaillePop();
 	for (int i = 0; i < t; ++i){
-		for(int j = 0; j < getIndividu(i)->getTailleChromosome(); ++i){
-			double valeurGene = getIndividu(i)->getGene(j).getValeur();
+		for(int j = 0; j < getIndividu(i)->getTailleChromosome(); ++j){
+			double valeurGene = getIndividu(i)->getGene(j)->getValeur();
 			double r = rand()/(double)RAND_MAX*0.1 - 0.05;
-			getIndividu(i)->getGene(j).setValeur( std::max(1., std::min(0., valeurGene + r)));
+			getIndividu(i)->getGene(j)->setValeur( std::max(0., std::min(1., valeurGene + r)));
 		}
 	}
 }
@@ -124,6 +126,7 @@ void AlgoGenetiqueTDJ::mutation(){
 void AlgoGenetiqueTDJ::affichage() {
 		int t = getTaillePop();
 		for (int i = 0; i < t; ++i){
-			std::cout << getIndividu(i)->getGain() << std::endl;
+			std::cout << i << ": " << getIndividu(i)->getGain() << " " << getIndividu(i)->getGene(0)->getValeur() <<" " << getIndividu(i)->getGene(1)->getValeur() <<" " << getIndividu(i)->getGene(2)->getValeur() <<" " << getIndividu(i)->getGene(3)->getValeur() << std::endl;
 		}
+		std::cout << " " << std::endl;
 }

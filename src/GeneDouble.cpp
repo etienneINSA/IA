@@ -24,6 +24,10 @@ double GeneDouble::getValeur() const{
 	return m_valeur;
 }
 
-void GeneDouble::setValeur(const int uneValeur){
+void GeneDouble::setValeur(const double uneValeur){
 	m_valeur = uneValeur;
+}
+
+void GeneDouble::copie(const GeneDouble &unGene){
+	m_valeur = unGene.getValeur();
 }

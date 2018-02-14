@@ -1,7 +1,7 @@
 /*
  * Gene.cpp
  *
- *  Created on: 9 févr. 2018
+ *  Created on: 9 fï¿½vr. 2018
  *      Author: et
  */
 
@@ -14,3 +14,5 @@ Gene::Gene(){
 Gene::~Gene(){
 
 }
+
+

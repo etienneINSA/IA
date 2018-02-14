@@ -21,7 +21,7 @@ StrategieEvo::~StrategieEvo() {
 }
 
 int StrategieEvo::actionSuivante(){
-	int resultat =  getIndividu()->getGene(m_dernieresActions).getValeur() > rand()/(double)RAND_MAX;
+	int resultat =  getIndividu()->getGene(m_dernieresActions)->getValeur() > rand()/(double)RAND_MAX;
 	return resultat;
 }
 

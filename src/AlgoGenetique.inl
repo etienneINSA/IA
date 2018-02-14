@@ -51,6 +51,7 @@ template<class T> void AlgoGenetique<T>::addIndividu(T &unIndividu){
 
 
 template<class T> void AlgoGenetique<T>::setPopulation(std::vector<T*> &unePopulation){
+	m_population.clear();
 	m_population = unePopulation;
 }
 
