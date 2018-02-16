@@ -23,6 +23,7 @@ protected:
 	int m_taillePopulation;
 	int m_nombreManches;
 	int m_memoirePop;
+	std::vector<std::vector<double>> m_moyenne;
 
 public:
 	AlgoGenetiqueTDJ(const Jeu &unJeu, const int uneTaillePop, const int unNombreManches, const int uneMemoirePop);
@@ -36,6 +37,8 @@ public:
 	void setNombreManches(const int unNombreManches);
 	int getMemoirePop() const;
 	void affichage();
+	void addMoyenne();
+	void affichageMoyenne();
 
 protected:
 	std::vector<double> fitnessFunction(Strategie &unJoueur1, Strategie &unJoueur2);
