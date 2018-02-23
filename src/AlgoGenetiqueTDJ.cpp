@@ -10,14 +10,8 @@
 #include <algorithm>
 #include <iostream>
 #include <stdlib.h>
-#include <SDL/SDL.h>
-#define POINTS_COUNT 4
-static SDL_Point points[POINTS_COUNT] = {
-    {320, 200},
-    {300, 240},
-    {340, 240},
-    {320, 200}
-};
+//#include <SDL/SDL.h>
+
 
 #include "AlgoGenetiqueTDJ.h"
 
@@ -81,8 +75,8 @@ std::vector<double> AlgoGenetiqueTDJ::fitnessFunction(Strategie &unJoueur1, Stra
 	unJoueur1.reinitialiser();
 	unJoueur2.reinitialiser();
 	std::vector<double> resultat;
-	resultat.push_back(gainJoueur1);
-	resultat.push_back(gainJoueur2);
+	resultat.push_back( gainJoueur1 + 0*gainJoueur2);
+	resultat.push_back( 0*gainJoueur1 + gainJoueur2);
 	return resultat;
 }
 
@@ -127,7 +121,7 @@ void AlgoGenetiqueTDJ::mutation(){
 	for (int i = 0; i < t; ++i){
 		for(int j = 0; j < getIndividu(i)->getTailleChromosome(); ++j){
 			double valeurGene = getIndividu(i)->getGene(j)->getValeur();
-			double r = rand()/(double)RAND_MAX*0.1 - 0.05;
+			double r = rand()/(double)RAND_MAX*0.01 - 0.005;
 			getIndividu(i)->getGene(j)->setValeur( std::max(0., std::min(1., valeurGene + r)));
 		}
 	}
@@ -163,41 +157,14 @@ void AlgoGenetiqueTDJ::addMoyenne(){
 	m_moyenne.push_back(moyenne);
 }
 
-void AlgoGenetiqueTDJaffichageMoyenne(){
-	    if (SDL_Init(SDL_INIT_VIDEO) == 0) {
-			SDL_Window* window = NULL;
-			SDL_Renderer* renderer = NULL;
-
-			if (SDL_CreateWindowAndRenderer(640, 480, 0, &window, &renderer) == 0) {
-				SDL_bool done = SDL_FALSE;
-
-				while (!done) {
-					SDL_Event event;
-
-					SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-					SDL_RenderClear(renderer);
-
-					SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-					SDL_RenderDrawLines(renderer, points, POINTS_COUNT);
-					SDL_RenderPresent(renderer);
-
-					while (SDL_PollEvent(&event)) {
-						if (event.type == SDL_QUIT) {
-							done = SDL_TRUE;
-                    }
-                }
-            }
-        }
-
-        if (renderer) {
-            SDL_DestroyRenderer(renderer);
-        }
-        if (window) {
-            SDL_DestroyWindow(window);
-        }
-    }
-    SDL_Quit();
-    return 0;
-}
-
+void AlgoGenetiqueTDJ::affichageMoyenne(){
+	int t = m_moyenne.size();
+	int g = pow(2, getMemoirePop());
+	for(int i = 0; i < t; ++i){
+		std::cout << i << ": " << m_moyenne.at(i).at(0) << "    ";
+		for(int j = 0; j < g; ++j){
+			std::cout << m_moyenne.at(i).at(j+1) << " ";
+		}
+		std::cout << std::endl;
+	}
 }

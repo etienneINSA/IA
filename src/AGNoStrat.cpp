@@ -32,5 +32,6 @@ void AGNoStrat::selection(){
 	}
 	sort(m_population.begin(), m_population.end(), Individu<GeneDouble>::comparaisonIndividu);
 	//affichage();
+	addMoyenne();
 	m_population.erase(m_population.begin(), m_population.begin() + getTaillePop()/2);
 }

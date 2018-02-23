@@ -36,6 +36,7 @@ void AGContreStratFixe::selection(){
 		individu->setGain(eval.at(0));
 	}
 	sort(m_population.begin(), m_population.end(), Individu<GeneDouble>::comparaisonIndividu);
-	affichage();
+	//affichage();
+	addMoyenne();
 	m_population.erase(m_population.begin(), m_population.begin() + getTaillePop()/2);
 }
